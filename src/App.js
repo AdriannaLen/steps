@@ -13,18 +13,24 @@ const messages = [
     const [text, setText] = useState({name: "Fred"});
     const [isOpen, setIsOpen] = useState(true);
 
+    /// to update for example step and change it so that it will be 2 you need to include callback
+    /// (s) => s +2 . Its always a good idea to use callback if we want to change state in the future
+
     function handleNext() {
-      if ( step < 3 )setStep(step +1);
+      if ( step < 3 )setStep((s) => s + 1); // before adding 2 it was setStep(step+1)
       setText({name: "Johnas"})
     }
 
     function handlePrevious() {
-      if ( step > 1 ) setStep(step - 1);
+      if ( step > 1 ) 
+      setStep((s) => s - 1); // before it was setStep(step-1)
       setText({name: "Fred"})
     }
 
+
+
   return <>
-    <button className="close" onClick={() => setIsOpen(!isOpen)}>&times;</button>
+    <button className="close" onClick={() => setIsOpen((is) => !is)}>&times;</button> 
     { isOpen && (<div className="steps">
    
     <div className="numbers">
