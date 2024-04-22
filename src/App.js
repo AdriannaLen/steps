@@ -54,27 +54,27 @@ return <div>
       <Button
       bgColor= "#7950f2"
       textColor= "#fff"
-      onClick={handlePrevious}
-      text="Previous"
-      emoji="👈" />
+      onClick={handlePrevious}>
+        <span>👈</span>Previous {/*we can close the Button and add html to add special features to the specific component even though Props is passed*/}
+        </Button>
 
       <Button
       bgColor= "#7950f2"
       textColor= "#fff"
-      onClick={handleNext}
-      text="Next"
-      emoji="👉" />
+      onClick={handleNext}>
+      Next<span>👉</span>
+      </Button>
     </div>
 
   </div>
   )} </div>
 }
 
-function Button({textColor, bgColor, onClick, text, emoji}) {
+function Button({textColor, bgColor, onClick, children}) {
 
   return (
 
     <button style={{backgroundColor: bgColor, color: textColor }}
-    onClick= {onClick}><span>{emoji}</span>{text}</button>
+    onClick= {onClick}>{children}</button> // passing children to <Button /> to add special features 
   )
 }
