@@ -11,6 +11,12 @@ export default function App (){
 
 return <div>
   <Steps />
+  <StepMessage step={1}>
+    <p>Pass in content</p>
+  </StepMessage>
+  <StepMessage step={2}>
+    <p>Read children prop</p>
+  </StepMessage>
   {/* <Steps /> */}
 </div> 
 }
@@ -48,14 +54,17 @@ return <div>
   
     </div>
 
-    <p className="message">Steps {step}: {messages[step -1]} ({text.name})</p>
+    <StepMessage step={step}>
+     {messages[step-1]}
+    </StepMessage>
+    
 
     <div className="buttons">
       <Button
       bgColor= "#7950f2"
       textColor= "#fff"
       onClick={handlePrevious}>
-        <span>👈</span>Previous {/*we can close the Button and add html to add special features to the specific component even though Props is passed*/}
+        <span>👈</span>Previous {/*we can close the Button and add html to add special features to the specific component even though Props is passed/ if you want to use Button with different feature*/}
         </Button>
 
       <Button
@@ -76,5 +85,15 @@ function Button({textColor, bgColor, onClick, children}) {
 
     <button style={{backgroundColor: bgColor, color: textColor }}
     onClick= {onClick}>{children}</button> // passing children to <Button /> to add special features 
+  )
+}
+
+function StepMessage({step, children}) {
+
+  return (
+    <div className="message">
+      <h3>Step {step}</h3>
+      {children}
+    </div>
   )
 }
